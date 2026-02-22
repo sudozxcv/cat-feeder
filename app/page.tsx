@@ -3,6 +3,7 @@
 export default function Home() {
 
   const openServo = async () => {
+    console.log("Trigger pressed!")
     await fetch("/api/servo", { method: "POST" });
   };
 
