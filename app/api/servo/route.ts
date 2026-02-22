@@ -13,6 +13,7 @@ export async function GET() {
   const trigger = await redis.get("servo_trigger");
 
   if (trigger === "1") {
+    console.log("trigger: ", trigger);
     await redis.set("servo_trigger", "0");
     return NextResponse.json({ status: "1" });
   }
