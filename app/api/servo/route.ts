@@ -4,8 +4,8 @@ import { Redis } from "@upstash/redis";
 const redis = Redis.fromEnv();
 
 export async function POST() {
-  await redis.set("servo_trigger", "1");
-  console.log("trigger pressed!")
+  const trigger = await redis.set("servo_trigger", "1");
+  console.log("trigger pressed! trigger status is: ", trigger);
   return NextResponse.json({ message: "Trigger activated" });
 }
 
