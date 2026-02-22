@@ -5,7 +5,7 @@ const redis = Redis.fromEnv();
 
 export async function POST() {
   const trigger = await redis.set("servo_trigger", "1");
-  console.log("trigger pressed! trigger status is: ", trigger);
+  console.log("trigger pressed! trigger status is: ", await redis.get("servo_trigger"));
   return NextResponse.json({ message: "Trigger activated" });
 }
 
